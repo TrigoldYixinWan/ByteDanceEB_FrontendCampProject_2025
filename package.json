@@ -1,0 +1,50 @@
+{
+  "name": "project-monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "build:shared": "npm --workspace packages/shared run build",
+    "dev:shared": "tsc -p packages/shared/tsconfig.json -w",
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:backend": "npm --workspace backend run dev",
+    "dev:frontend:ws": "concurrently \"npm:dev:shared\" \"npm:dev:frontend\"",
+    "dev:backend:ws": "concurrently \"npm:dev:shared\" \"npm:dev:backend\"",
+    "dev": "concurrently \"npm:dev:shared\" \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "predev": "npm run build:shared",
+    "build": "npm run build:shared && npm --workspace frontend run build && npm --workspace backend run build",
+    "start:frontend": "npm --workspace frontend run start",
+    "start:backend": "npm --workspace backend run start",
+    "lint": "npm run lint --workspace frontend && npm run lint --workspace backend",
+    "typecheck": "npm run typecheck --workspace frontend && npm run typecheck --workspace backend",
+    "pretypecheck": "npm run build:shared",
+    "agent:log": "node ./scripts/agent-log.js",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.5",
+    "typescript": "~5.5.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

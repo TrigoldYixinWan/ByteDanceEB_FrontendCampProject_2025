@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Husky v9+ simplified hook. Removed deprecated shim lines.
+# Run staged lint only for speed, then typecheck (optional).
+
+npx lint-staged || exit 1
+npm run typecheck || exit 1
