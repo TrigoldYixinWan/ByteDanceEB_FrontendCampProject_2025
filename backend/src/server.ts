@@ -25,7 +25,8 @@ async function bootstrap() {
 
   // Services (repositories omitted placeholders)
   container.register(DI_KEYS.ChatService, () => new ChatService());
-  container.register(DI_KEYS.DocumentService, () => new DocumentService(container));
+  // Make DocumentService a singleton so its in-memory repository persists across requests
+  container.registerSingleton(DI_KEYS.DocumentService, () => new DocumentService(container));
   container.register(DI_KEYS.RetrievalService, () => new RetrievalService());
   container.register(DI_KEYS.AnalyticsService, () => new AnalyticsService());
   container.register(DI_KEYS.BusinessService, () => new BusinessService());

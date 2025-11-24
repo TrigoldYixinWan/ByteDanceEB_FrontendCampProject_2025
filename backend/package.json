@@ -9,10 +9,11 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --ext .ts",
     "start": "node dist/server.js",
-    "test": "vitest"
+    "test": "vitest",
+    "e2e:kms": "ts-node-dev --transpile-only e2e/kms.e2e.ts"
   },
   "dependencies": {
-    "@fastify/cors": "^11.1.0",
+    "@fastify/cors": "^8.3.0",
     "@project/shared": "*",
     "dotenv": "^16.4.0",
     "fastify": "^4.28.0"
