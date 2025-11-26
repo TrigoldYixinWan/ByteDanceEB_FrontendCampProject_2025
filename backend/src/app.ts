@@ -13,7 +13,7 @@ export function createApp(container: Container) {
       const ok = allowed.some((re) => re.test(origin));
       cb(null, ok);
     },
-    credentials: true
+    credentials: true,
   });
   registerRouters(app, container);
   return app;

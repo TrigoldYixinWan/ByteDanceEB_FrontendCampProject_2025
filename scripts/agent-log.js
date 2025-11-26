@@ -15,7 +15,7 @@ function parseArgs() {
     const a = args[i];
     if (a.startsWith('--')) {
       const key = a.slice(2);
-      const val = args[i+1] && !args[i+1].startsWith('--') ? args[i+1] : true;
+      const val = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true;
       out[key] = val;
       if (val !== true) i++;
     }
@@ -23,7 +23,9 @@ function parseArgs() {
   return out;
 }
 
-function nowISO() { return new Date().toISOString(); }
+function nowISO() {
+  return new Date().toISOString();
+}
 
 function buildEntry(opts) {
   const time = nowISO();
@@ -32,7 +34,10 @@ function buildEntry(opts) {
   const title = opts.title || '';
   const branch = opts.branch || '';
   const notes = opts.notes || '';
-  const scope = (opts.scope || '').split(',').map(s => s.trim()).filter(Boolean);
+  const scope = (opts.scope || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   const lines = [];
   lines.push('---');
@@ -42,7 +47,7 @@ function buildEntry(opts) {
   if (title) lines.push(`title: ${title}`);
   if (scope.length) {
     lines.push('scope:');
-    scope.forEach(s => lines.push(`  - ${s}`));
+    scope.forEach((s) => lines.push(`  - ${s}`));
   }
   if (branch) lines.push(`branch: ${branch}`);
   if (opts.commit) lines.push(`commit: ${opts.commit}`);

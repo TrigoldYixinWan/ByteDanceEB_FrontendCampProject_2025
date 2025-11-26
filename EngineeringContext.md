@@ -193,6 +193,13 @@ npm run start:frontend   # 启动编译后的前端
 - 大规模重构（例如更换 ORM）应先在本文件新增“迁移计划”段落再执行。
 - 在 PR 中引用本文件相关章节（例如“5.2 引入真实数据库”）作为变更说明。
 
+### 7.1 代码风格与格式化约束
+
+- 项目代码风格的唯一来源是根目录下的 `.eslintrc.cjs`、`.prettierrc.json` 与 `.prettierignore`（README“代码风格”一节也记录要点）。**任何 agent 在阅读或生成代码前，必须先读取上述文件，确认当前约束，再按照约束书写代码。**
+- 主要规则（概览）：TypeScript/React 规则基于 `eslint:recommended` + `@typescript-eslint` + `react`，通过 `plugin:prettier/recommended` 强制 Prettier 结果，并启用了 `@typescript-eslint/naming-convention`（默认 camelCase，const 可 camelCase/UPPER_CASE，类型/枚举为 PascalCase，带引号属性不强制）。Prettier 采用 `printWidth=100`、2 空格缩进、单引号、必须分号、无尾随逗号、LF 行尾。
+- 所有 JS/TS/TSX/CJS/MJS 文件提交前必须通过 `npx lint-staged`（Husky 自动调用）。若 agent 以非 git 流程修改文件，也需要显式运行 `npm run format` 和 `npm run lint`（需在 Git Bash 环境下执行）来验证。
+- 若需新增或调整风格规则，必须先在 `AGENT_LOG.md` Claim（因为涉及 `.eslintrc.cjs`、`.prettierrc` 等关键文件），并在本节记录新的要求，确保后续 agent 有据可依。
+
 ---
 
 ## 8. 后续改进占位
@@ -270,6 +277,6 @@ doneRecord(
 
 审计与故障处理：如果 agent 在写 Claim 后长时间未提交 Done，应当追加 `Blocked` 条目说明原因；若写入失败多次，应通知人工维护者并停止相关自动化任务。
 
-仓库中也提供了一个小工具 `scripts/agent-log.js`，以及 `npm run agent:log` 快捷脚本，用于以标准格式追加条目，推荐所有 agent 使用此工具以保证格式一致并便于自动解析。
+仓库中也提供了一个小工具 `scripts/agent-log.js`，以及 `npm run agent:log` 快捷脚本，用于以标准格式追加条目，要求所有 agent 使用此工具以保证格式一致并便于自动解析。
 
 如需新增章节，请保持：编号递增、标题简洁、内容面向“快速理解与安全改动”。

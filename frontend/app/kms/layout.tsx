@@ -6,10 +6,18 @@ export default function KmsLayout({ children }: { children: React.ReactNode }) {
       <aside style={{ width: 200, borderRight: '1px solid #ddd', padding: 12 }}>
         <nav>
           <ul>
-            <li><a href="/kms">Dashboard</a></li>
-            <li><a href="/kms/business">业务</a></li>
-            <li><a href="/kms/scenes">场景</a></li>
-            <li><a href="/kms/documents">文档</a></li>
+            <li>
+              <a href="/kms">Dashboard</a>
+            </li>
+            <li>
+              <a href="/kms/business">业务</a>
+            </li>
+            <li>
+              <a href="/kms/scenes">场景</a>
+            </li>
+            <li>
+              <a href="/kms/documents">文档</a>
+            </li>
           </ul>
         </nav>
       </aside>

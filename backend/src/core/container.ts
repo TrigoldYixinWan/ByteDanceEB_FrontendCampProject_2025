@@ -46,5 +46,5 @@ export const DI_KEYS = {
   ChatMessageRepository: 'ChatMessageRepository',
   // Analytics
   AnalyticsService: 'AnalyticsService',
-  AnalyticsRepository: 'AnalyticsRepository'
+  AnalyticsRepository: 'AnalyticsRepository',
 } as const;

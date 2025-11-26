@@ -1,7 +1,7 @@
 export enum DocumentStatus {
   Processing = 'processing',
   Active = 'active',
-  Failed = 'failed'
+  Failed = 'failed',
 }
 
 export interface Business {

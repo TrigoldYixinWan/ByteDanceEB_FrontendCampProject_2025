@@ -7,19 +7,20 @@ module.exports = {
       './tsconfig.base.json',
       './frontend/tsconfig.json',
       './backend/tsconfig.json',
-      './packages/shared/tsconfig.json'
+      './packages/shared/tsconfig.json',
     ],
     ecmaVersion: 2022,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   settings: {
-    react: { version: 'detect' }
+    react: { version: 'detect' },
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
   ],
   env: { node: true, browser: true, es2022: true },
   rules: {
@@ -32,9 +33,63 @@ module.exports = {
       {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_'
-      }
-    ]
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'import',
+        format: ['camelCase', 'PascalCase'],
+      },
+      {
+        selector: 'variable',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+      {
+        selector: 'function',
+        format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+      {
+        selector: 'typeLike',
+        format: ['PascalCase'],
+      },
+      {
+        selector: 'enumMember',
+        format: ['PascalCase', 'UPPER_CASE'],
+      },
+      {
+        selector: 'property',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+      {
+        selector: 'property',
+        modifiers: ['requiresQuotes'],
+        format: null,
+      },
+      {
+        selector: 'default',
+        format: ['camelCase'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+    ],
+    'prettier/prettier': 'error',
   },
-  ignorePatterns: ['dist', 'node_modules']
+  overrides: [
+    {
+      files: ['*.cjs', '*.js'],
+      parserOptions: {
+        project: null,
+      },
+      env: { node: true },
+    },
+  ],
+  ignorePatterns: ['dist', 'node_modules'],
 };

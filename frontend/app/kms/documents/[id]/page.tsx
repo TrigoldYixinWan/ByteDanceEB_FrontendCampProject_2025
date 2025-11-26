@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { DocumentStatusDto } from '@project/shared';
 import React from 'react';
 

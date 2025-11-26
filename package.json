@@ -21,6 +21,8 @@
     "lint": "npm run lint --workspace frontend && npm run lint --workspace backend",
     "typecheck": "npm run typecheck --workspace frontend && npm run typecheck --workspace backend",
     "pretypecheck": "npm run build:shared",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "agent:log": "node ./scripts/agent-log.js",
     "prepare": "husky install"
   },
@@ -31,16 +33,19 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "husky": "^9.0.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.5",
     "typescript": "~5.5.4"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
+    "*.{ts,tsx,js,jsx,cjs,mjs}": [
+      "prettier --write",
       "eslint --fix"
     ],
-    "*.{json,md}": [
+    "*.{json,md,css,scss}": [
       "prettier --write"
     ]
   },

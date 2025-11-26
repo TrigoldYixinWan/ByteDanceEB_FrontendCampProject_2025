@@ -15,7 +15,7 @@ export class DocumentRepository {
       title: dto.title,
       status: DocumentStatus.Processing,
       createdAt: now,
-      updatedAt: now
+      updatedAt: now,
     };
     this.docs.set(id, doc);
     return doc;

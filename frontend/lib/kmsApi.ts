@@ -1,4 +1,9 @@
-import { CreateDocumentDto, Document, DocumentStatusDto, PaginatedDocumentsDto } from '@project/shared';
+import {
+  CreateDocumentDto,
+  Document,
+  DocumentStatusDto,
+  PaginatedDocumentsDto,
+} from '@project/shared';
 import { apiFetch } from './apiClient';
 
 export function createDocument(dto: CreateDocumentDto): Promise<Document> {

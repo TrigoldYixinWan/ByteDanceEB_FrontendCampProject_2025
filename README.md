@@ -74,11 +74,29 @@ npm run start:frontend
 - `npm run start:backend`：启动构建后的后端
 - `npm run typecheck`：两端类型检查
 - `npm run lint`：两端 Lint
+- `npm run format`：使用 Prettier 统一格式化
+- `npm run format:check`：仅检查是否符合项目格式
 
 工作区脚本（子包）：
 
 - `frontend/`：`dev`、`build`、`start`、`typecheck`、`lint`
 - `backend/`：`dev`、`build`、`start`、`typecheck`、`lint`、`test`
+
+---
+
+## 代码风格（ESLint + Prettier）
+
+- 参考 `EngineeringContext` / `ServiceContext` 中“多团队协同 + 多服务分层”的要求，根目录启用 Prettier 作为单一格式化来源，规则位于 `.prettierrc.json`：
+  - 2 空格缩进 / 不使用 Tab（便于多端 diff）
+  - 单引号、需要分号（保持 TypeScript/DI 层一致性）
+  - `printWidth=100`，兼顾服务层注释与业务说明
+  - 禁用 trailing comma（方便在 JSON/DTO 中复制粘贴）
+- ESLint 通过 `plugin:prettier/recommended` 将格式违规直接视作错误，同时保留类型/React 规则；`pre-commit` 会运行 `lint-staged` + `typecheck`。
+- 为保证多终端一致：
+  - `npm run format` / `npm run format:check`（Git Bash）
+  - VS Code 可启用 “Format on Save” 并选择工作区 Prettier。
+
+> 这些规则确保 KMS/RAG/Analytics/Multimodal 等模块在多协作者与自动代理场景下保持统一代码风格，便于审阅和自动生成。
 
 ---
 

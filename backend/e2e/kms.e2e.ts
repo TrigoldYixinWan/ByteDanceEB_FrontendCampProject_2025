@@ -31,12 +31,12 @@ async function createDocument(): Promise<CreateDocumentResponse> {
   const payload = {
     businessId: 'biz_e2e_' + Date.now(),
     title: 'E2E Sample Doc',
-    sceneId: 'scene_e2e_' + Math.floor(Math.random() * 1000)
+    sceneId: 'scene_e2e_' + Math.floor(Math.random() * 1000),
   };
   const res = await fetch(`${BASE_URL}/api/kms/documents`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
   if (!res.ok) {
     throw new Error(`Create failed: ${res.status} ${res.statusText}`);

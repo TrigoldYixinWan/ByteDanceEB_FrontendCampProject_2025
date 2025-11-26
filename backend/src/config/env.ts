@@ -16,6 +16,6 @@ export function loadConfig(): AppConfig {
     dbUrl: process.env.DB_URL,
     vectorDbUrl: process.env.VECTOR_DB_URL,
     queueUrl: process.env.QUEUE_URL,
-    openAiApiKey: process.env.OPENAI_API_KEY
+    openAiApiKey: process.env.OPENAI_API_KEY,
   };
 }
