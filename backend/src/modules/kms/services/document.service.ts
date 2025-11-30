@@ -29,4 +29,23 @@ export class DocumentService {
     // Simplified success path
     this.repo.updateStatus(doc.id, DocumentStatus.Active);
   }
+
+  async queryDocuments(filters?: {
+    businessId?: string;
+    sceneId?: string;
+    status?: string;
+    keyword?: string;
+  }): Promise<Document[]> {
+    const statusFilter = filters?.status ? (filters.status as DocumentStatus) : undefined;
+    return this.repo.query({
+      businessId: filters?.businessId,
+      sceneId: filters?.sceneId,
+      status: statusFilter,
+      keyword: filters?.keyword,
+    });
+  }
+
+  async getAllDocuments(): Promise<Document[]> {
+    return this.repo.getAll();
+  }
 }

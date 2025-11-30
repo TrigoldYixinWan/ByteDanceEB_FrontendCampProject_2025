@@ -1,27 +1,34 @@
+'use client';
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import Header from './components/Header';
+import Navigation from './components/Navigation';
 
 export default function KmsLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  // 根据当前路径确定激活的导航项
+  let currentTab: 'dashboard' | 'business' | 'scenes' | 'documents' | 'status' | 'upload' =
+    'status';
+
+  if (pathname?.includes('/business')) {
+    currentTab = 'business';
+  } else if (pathname?.includes('/scenes')) {
+    currentTab = 'scenes';
+  } else if (pathname?.includes('/documents')) {
+    currentTab = 'documents';
+  } else if (pathname?.includes('/upload')) {
+    currentTab = 'upload';
+  } else if (pathname === '/kms' || pathname === '/kms/') {
+    currentTab = 'status';
+  }
+
   return (
-    <section style={{ display: 'flex' }}>
-      <aside style={{ width: 200, borderRight: '1px solid #ddd', padding: 12 }}>
-        <nav>
-          <ul>
-            <li>
-              <a href="/kms">Dashboard</a>
-            </li>
-            <li>
-              <a href="/kms/business">业务</a>
-            </li>
-            <li>
-              <a href="/kms/scenes">场景</a>
-            </li>
-            <li>
-              <a href="/kms/documents">文档</a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main style={{ flex: 1, padding: 24 }}>{children}</main>
-    </section>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Header />
+      <Navigation currentTab={currentTab} />
+      <div style={{ flex: 1, overflow: 'auto', backgroundColor: '#f5f7fa' }}>{children}</div>
+    </div>
   );
 }

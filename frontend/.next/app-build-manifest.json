@@ -1,3 +1,59 @@
 {
-  "pages": {}
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_globals_css-node_modules_tdesign-react_es_style_index_css.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/kms/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-node_modules_tdesign-react_es_select_style_index_css.css",
+      "static/css/css-node_modules_tdesign-react_es_checkbox_style_index_css-node_modules_tdesign-react_es_form-e8f06d.css",
+      "static/css/css-node_modules_tdesign-react_es_button_style_index_css-node_modules_tdesign-react_es_input--f4a57d.css",
+      "static/css/css-node_modules_tdesign-react_es_dialog_style_index_css-node_modules_tdesign-react_es_image--997b1d.css",
+      "static/css/css-node_modules_tdesign-react_es_affix_style_index_css-node_modules_tdesign-react_es_table_s-e28e67.css",
+      "static/chunks/app/kms/page.js"
+    ],
+    "/kms/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/kms/layout.js"
+    ],
+    "/kms/upload/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-node_modules_tdesign-react_es_checkbox_style_index_css-node_modules_tdesign-react_es_form-e8f06d.css",
+      "static/css/css-node_modules_tdesign-react_es_button_style_index_css-node_modules_tdesign-react_es_input--f4a57d.css",
+      "static/css/css-node_modules_tdesign-react_es_dialog_style_index_css-node_modules_tdesign-react_es_image--997b1d.css",
+      "static/css/css-node_modules_tdesign-react_es_select_style_index_css.css",
+      "static/chunks/app/kms/upload/page.js"
+    ],
+    "/kms/documents/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-node_modules_tdesign-react_es_select_style_index_css.css",
+      "static/css/css-node_modules_tdesign-react_es_checkbox_style_index_css-node_modules_tdesign-react_es_form-e8f06d.css",
+      "static/css/css-node_modules_tdesign-react_es_button_style_index_css-node_modules_tdesign-react_es_input--f4a57d.css",
+      "static/css/css-node_modules_tdesign-react_es_dialog_style_index_css-node_modules_tdesign-react_es_image--997b1d.css",
+      "static/css/css-node_modules_tdesign-react_es_affix_style_index_css-node_modules_tdesign-react_es_table_s-e28e67.css",
+      "static/chunks/app/kms/documents/page.js"
+    ],
+    "/kms/scenes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/kms/scenes/page.js"
+    ],
+    "/kms/business/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/kms/business/page.js"
+    ]
+  }
 }

@@ -1,1 +1,8 @@
-{}
+{
+  "/page": "app/page.js",
+  "/kms/page": "app/kms/page.js",
+  "/kms/business/page": "app/kms/business/page.js",
+  "/kms/upload/page": "app/kms/upload/page.js",
+  "/kms/documents/page": "app/kms/documents/page.js",
+  "/kms/scenes/page": "app/kms/scenes/page.js"
+}

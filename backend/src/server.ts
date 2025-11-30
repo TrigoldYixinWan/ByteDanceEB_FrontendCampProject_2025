@@ -29,8 +29,8 @@ async function bootstrap() {
   container.registerSingleton(DI_KEYS.DocumentService, () => new DocumentService(container));
   container.register(DI_KEYS.RetrievalService, () => new RetrievalService());
   container.register(DI_KEYS.AnalyticsService, () => new AnalyticsService());
-  container.register(DI_KEYS.BusinessService, () => new BusinessService());
-  container.register(DI_KEYS.SceneService, () => new SceneService());
+  container.register(DI_KEYS.BusinessService, () => new BusinessService(container));
+  container.register(DI_KEYS.SceneService, () => new SceneService(container));
   container.registerSingleton(DI_KEYS.ProviderRegistry, () => {
     const reg = new ProviderRegistry();
     reg.register(new DummyProvider());
