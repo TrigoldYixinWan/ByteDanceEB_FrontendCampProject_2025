@@ -96,7 +96,7 @@ export default function FilterPanel({
         <Radio.Group
           value={selectedStatus}
           onChange={(value) => onStatusChange(value as string)}
-          style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}
         >
           {statusOptions.map((option) => (
             <Radio key={option.value} value={option.value}>
